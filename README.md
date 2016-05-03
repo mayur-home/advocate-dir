@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # advocateDir
 
 **Generated from HotTowel Angular**
@@ -266,3 +267,6 @@ The `blocks.router` module contains a routing helper module that assists in addi
 ## License
 
 MIT
+=======
+# advocate-dir
+>>>>>>> 6d2ac648edc86bdcf822428b2e678268381f74aa
