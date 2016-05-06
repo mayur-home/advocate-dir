@@ -16,7 +16,7 @@
       {
         state: 'dashboard',
         config: {
-          url: '/',
+          url: '/partials',
           templateUrl: 'app/modules/dashboard/dashboard.html',
           controller: 'DashboardController',
           controllerAs: 'vm',

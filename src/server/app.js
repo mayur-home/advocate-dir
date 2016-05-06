@@ -4,6 +4,8 @@
 var express = require('express');
 var session = require('express-session');
 var app = express();
+var router = express.Router();
+var routes = require('./routes');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
@@ -12,6 +14,8 @@ var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 var mongoose = require('mongoose');
 var flash = require('connect-flash');
+var path = require('path');
+var auth = require('./app/config/authentication');
 
 var dbHost = 'mongodb://localhost:27017/test';
 mongoose.connect(dbHost);
@@ -26,13 +30,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(logger('dev'));
+app.use('/api', routes);
 
-////////////// PASSPORT - to be move in separate module /////////////////
+// handling Angular routes
+// TODO: cleanup
+var securedPages = [
+  '/partials'
+];
+// All secured pages needs to be pass authentication
+for (var index in securedPages) {
+  router.get(securedPages[index], auth.ensureAuthenticated);
+}
 
+app.use(router);
 
-////////////// End PASSPORT ///////////////
-
-app.use('/api', require('./routes'));
+require('./app/config/passport');
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
