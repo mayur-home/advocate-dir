@@ -28,7 +28,7 @@
       $logProvider.debugEnabled(true);
     }
     exceptionHandlerProvider.configure(config.appErrorPrefix);
-    routerHelperProvider.configure({ docTitle: config.appTitle + ': ' });
+    routerHelperProvider.configure({docTitle: config.appTitle + ': '});
   }
 
 })();
