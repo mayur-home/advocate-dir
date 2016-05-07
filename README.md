@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # advocateDir
 
 **Generated from HotTowel Angular**
