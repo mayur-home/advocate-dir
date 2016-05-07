@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var base64 = require('base-64');
 
-var userSchema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var userSchema = new Schema({
   // creating index on field id
   id: {type: Number, index: true},
   firstName: String,
@@ -8,8 +10,43 @@ var userSchema = mongoose.Schema({
   age: String,
   location: String,
   email: String,
-  password: String
+  hashedPassword: String
 });
+
+/**
+ * Virtuals
+ */
+userSchema
+  .virtual('password')
+  .set(function(password) {
+    this._password = password;
+    this.hashedPassword = this.encryptPassword(password);
+  })
+  .get(function() {
+    return this._password;
+  });
+
+/**
+ * Methods
+ */
+userSchema.methods = {
+
+  /**
+   * Authenticate - check if the passwords are the same
+   */
+
+  authenticate: function(plainText) {
+    return this.encryptPassword(plainText) === this.hashedPassword;
+  },
+
+  /**
+   * Encrypt password
+   */
+
+  encryptPassword: function(password) {
+    return base64.encode(password);
+  }
+};
 
 var User = mongoose.model('User', userSchema);
 

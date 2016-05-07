@@ -9,6 +9,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
     "body-parser": "^1.8.2",
     "connect-flash": "^0.1.1",
     "express": "^4.9.3",
