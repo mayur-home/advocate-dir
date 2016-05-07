@@ -1,5 +1,9 @@
 (function() {
   'use strict';
 
-  angular.module('app.layout', ['app.core', 'ui.bootstrap.collapse']);
+  angular.module('app.layout', [
+    'app.core',
+    'ui.bootstrap.collapse'
+  ]);
+
 })();

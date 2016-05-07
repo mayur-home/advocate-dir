@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[advocateDir Error] ',
-    appTitle: 'advocateDir'
+    appErrorPrefix: '[Advocate Directory Error] ',
+    appTitle: 'Advocate Directory'
   };
 
   core.value('config', config);
