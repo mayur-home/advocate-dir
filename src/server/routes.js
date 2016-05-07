@@ -1,3 +1,4 @@
+//jshint -W089
 'use strict';
 
 var router = require('express').Router();
@@ -8,7 +9,7 @@ var routes = [
   './app/routers/user'
 ];
 
-for(var item in routes) {
+for (var item in routes) {
   require(routes[item])(router);
 }
 

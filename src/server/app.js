@@ -1,4 +1,5 @@
 /*jshint node:true*/
+//jshint -W089
 'use strict';
 
 var express = require('express');

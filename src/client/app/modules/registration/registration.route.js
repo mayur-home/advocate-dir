@@ -16,7 +16,7 @@
       {
         state: 'registration',
         config: {
-          url: '/partials/signup',
+          url: '/partials/registration',
           templateUrl: 'app/modules/registration/registration.html',
           controller: 'RegistrationController',
           controllerAs: 'vm',

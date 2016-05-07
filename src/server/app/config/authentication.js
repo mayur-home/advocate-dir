@@ -9,4 +9,4 @@ exports.ensureAuthenticated = function ensureAuthenticated(req, res, next) {
     return next();
   }
   res.send(401);
-}
+};
