@@ -17,7 +17,7 @@
     //////////////
 
     function activate() {
-      logger.info('Activated Dashboard View');
+      logger.info('Activated Sign In View');
     }
 
     function login() {
