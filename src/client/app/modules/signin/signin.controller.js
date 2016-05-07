@@ -22,18 +22,18 @@
 
     function login() {
       session.login({
-        email: vm.email,
-        password: vm.password
+        email: vm.model.email,
+        password: vm.model.password
       })
         .then(loginSuccess)
         .catch(loginFailure);
 
       function loginSuccess(user) {
-        logger.info('user has logged in successfully');
+        logger.info('User has logged in successfully');
       }
 
       function loginFailure() {
-        logger.info('login failed');
+        logger.info('Login failed');
       }
     }
   }
