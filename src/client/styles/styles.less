@@ -1,13 +1,39 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "bower_components/bootstrap/less/bootstrap.less";
 
+/* Start Global Variables */
+// Material Teal color
+@application-brand-color: #009688;
+// Margin for body
 @content-margin-top: 60px;
+
+// Font-Style for application
 @application-font-family: "Open Sans", "Segoe UI", arial;
+
+// Misc. Color Variables
 @color-black: black;
+@color-white: white;
 @panel-shadow: 2px 2px 10px @color-black;
 
-* {
-  font-family: @application-font-family;
-}
+// Nav-bar Colors
+@nav-bar-misc-color: #80CBC4;
+
+/* End Global Variables */
+
+// Overriding Primary style
+@brand-primary: @application-brand-color;
+
+// Overriding Font Style
+@font-family-sans-serif: @application-font-family;
+
+// Overriding Menu Style
+@navbar-inverse-color: @application-brand-color;
+@navbar-inverse-bg: @application-brand-color;
+@navbar-inverse-link-color: @color-white;
+@navbar-inverse-brand-hover-color: @nav-bar-misc-color;
+@navbar-inverse-border: @nav-bar-misc-color;
+@navbar-inverse-toggle-border-color:@nav-bar-misc-color;
+@navbar-inverse-toggle-hover-bg: @nav-bar-misc-color;
 
 .content {
   margin-top: @content-margin-top;
