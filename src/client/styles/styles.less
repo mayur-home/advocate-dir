@@ -1,6 +1,5 @@
 // Importing Open Sans Font
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
 // Importing bootstrap.less for overriding bootstrap variables.
 @import "bower_components/bootstrap/less/bootstrap.less";
 
@@ -20,6 +19,10 @@
 
 // Nav-bar Colors
 @nav-bar-misc-color: #80CBC4;
+
+// help-block overriding
+@help-block-margin: 0px 0px 0px 5px;
+@help-block-font-size: 12px;
 
 /* End Global Variables */
 
@@ -44,4 +47,9 @@
 
 .panel {
   box-shadow: @panel-shadow;
+}
+
+.help-block {
+  font-size: @help-block-font-size;
+  margin: @help-block-margin;
 }

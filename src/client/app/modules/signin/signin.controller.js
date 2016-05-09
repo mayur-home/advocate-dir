@@ -10,7 +10,7 @@
   function SigninController(session, logger) {
     var vm = this;
     vm.title = 'Signin';
-    vm.login = login;
+    vm.signin = signin;
 
     activate();
 
@@ -20,8 +20,8 @@
       logger.info('Activated Sign In View');
     }
 
-    function login() {
-      session.login({
+    function signin() {
+      session.signin({
         email: vm.model.email,
         password: vm.model.password
       })
