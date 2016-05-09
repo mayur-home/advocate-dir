@@ -16,6 +16,18 @@
           </a>
         </li>
       </ul>
+      <ul ng-if="vm.user" class="nav navbar-nav pull-left">
+        <li>
+          <a>
+            <b>{{vm.user}}</b>
+          </a>
+        </li>
+        <li>
+          <a href="#" ng-click="vm.logout()">
+            Logout
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

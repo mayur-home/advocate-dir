@@ -6,11 +6,15 @@
     .factory('session', session);
 
   /* @ngInject */
-  function session($resource, $q) {
-    var Auth = $resource('/api/auth/session');
+  function session($http, $q, $rootScope) {
+    var authUrl = '/api/auth/session';
+    var user = {};
 
     return {
-      signin: signin
+      signin: signin,
+      signout: signout,
+      get: getSession,
+      getUser: getUser
     };
 
     /////////////
@@ -18,17 +22,45 @@
     function signin(user) {
       var defer = $q.defer();
 
-      Auth.save({
+      $http.post(authUrl, {
         email: user.email,
         password: user.password,
         rememberMe: user.rememberMe
-      }, function(user) {
+      }).then(function(response) {
+        user = response.data;
+        $rootScope.$broadcast('login', user);
         defer.resolve(user);
       }, function(err) {
         defer.reject(err.data);
       });
 
       return defer.promise;
+    }
+
+    function signout() {
+      $http.delete(authUrl)
+        .then(function(data) {
+          console.log('session deleted');
+          user = {};
+        });
+    }
+
+    function getSession() {
+      var defer = $q.defer();
+
+      $http.get(authUrl)
+        .then(function(response) {
+          if (response.data._id) {
+            user = response.data;
+            defer.resolve(user);
+          }
+        });
+
+      return defer.promise;
+    }
+
+    function getUser() {
+      return user;
     }
   }
 

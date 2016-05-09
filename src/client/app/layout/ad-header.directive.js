@@ -6,14 +6,15 @@
     .directive('adHeader', adHeader);
 
   /* @ngInject */
-  function adHeader() {
+  function adHeader(session, $rootScope, $state) {
     var directive = {
       bindToController: true,
       controller: TopNavController,
       controllerAs: 'vm',
       restrict: 'EA',
       scope: {
-        'navline': '='
+        'navline': '=navline',
+        'user': '=user'
       },
       templateUrl: 'app/layout/ad-header.html'
     };
@@ -23,7 +24,16 @@
     /* @ngInject */
     function TopNavController($scope) {
       var vm = this;
+      vm.logout = logout;
       $scope.isCollapsed = true;
+
+      /////////////
+
+      function logout() {
+        session.signout();
+        $rootScope.$broadcast('logOut');
+        $state.go('signin');
+      }
     }
 
     return directive;

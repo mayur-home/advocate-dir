@@ -5,7 +5,6 @@
     .module('app.registration')
     .controller('RegistrationController', RegistrationController);
 
-  RegistrationController.$inject = ['profile', 'logger'];
   /* @ngInject */
   function RegistrationController(profile, logger) {
     var vm = this;

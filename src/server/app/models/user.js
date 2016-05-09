@@ -26,6 +26,12 @@ userSchema
     return this._password;
   });
 
+userSchema
+  .virtual('user_info')
+  .get(function () {
+    return { '_id': this._id, 'email': this.email };
+  });
+
 /**
  * Methods
  */

@@ -5,9 +5,8 @@
     .module('app.signin')
     .controller('SigninController', SigninController);
 
-  SigninController.$inject = ['session', 'logger'];
   /* @ngInject */
-  function SigninController(session, logger) {
+  function SigninController(session, logger, $state) {
     var vm = this;
     vm.title = 'Signin';
     vm.signin = signin;
@@ -30,6 +29,7 @@
 
       function loginSuccess(user) {
         logger.info('User has logged in successfully');
+        $state.go('welcome');
       }
 
       function loginFailure() {

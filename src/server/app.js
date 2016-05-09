@@ -35,6 +35,15 @@ app.use('/api', routes);
 
 // handling Angular routes
 // TODO: cleanup
+
+//router.get('/partials/*', function(req, res, next) {
+//  console.log(req.isAuthenticated());
+//  if (!req.user) {
+//    res.send('/partials/signin');
+//  }
+//  // next();
+//});
+
 var securedPages = [
   '/partials'
 ];
