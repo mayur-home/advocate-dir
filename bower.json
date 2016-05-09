@@ -37,7 +37,13 @@
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
+        "dist/js/bootstrap.js",
+        "css/font-awesome.min.css"
+      ]
+    },
+    "font-awesome":{
+      "main": [
+        "css/font-awesome.min.css"
       ]
     }
   }

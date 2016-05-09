@@ -16,7 +16,7 @@
       {
         state: 'signin',
         config: {
-          url: '/partials/login',
+          url: '/partials/signin',
           templateUrl: 'app/modules/signin/signin.html',
           controller: 'SigninController',
           controllerAs: 'vm',

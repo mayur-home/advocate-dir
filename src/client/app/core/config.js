@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[advocateDir Error] ',
-    appTitle: 'advocateDir'
+    appErrorPrefix: '[Advocate Directory Error] ',
+    appTitle: 'Advocate Directory'
   };
 
   core.value('config', config);
@@ -28,7 +28,7 @@
       $logProvider.debugEnabled(true);
     }
     exceptionHandlerProvider.configure(config.appErrorPrefix);
-    routerHelperProvider.configure({ docTitle: config.appTitle + ': ' });
+    routerHelperProvider.configure({docTitle: config.appTitle + ': '});
   }
 
 })();

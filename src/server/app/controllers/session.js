@@ -1,3 +1,4 @@
+// jshint -W106
 'use strict';
 
 var mongoose = require('mongoose'),
@@ -7,7 +8,7 @@ var mongoose = require('mongoose'),
  * Session
  * returns info on authenticated user
  */
-exports.session = function (req, res) {
+exports.session = function(req, res) {
   res.json(req.user.user_info);
 };
 
@@ -15,12 +16,12 @@ exports.session = function (req, res) {
  * Logout
  * returns nothing
  */
-exports.logout = function (req, res) {
-  if(req.user) {
+exports.logout = function(req, res) {
+  if (req.user) {
     req.logout();
     res.send(200);
   } else {
-    res.send(400, "Not logged in");
+    res.send(400, 'Not logged in');
   }
 };
 
@@ -28,13 +29,17 @@ exports.logout = function (req, res) {
  *  Login
  *  requires: {email, password}
  */
-exports.login = function (req, res, next) {
+exports.login = function(req, res, next) {
   passport.authenticate('login', function(err, user, info) {
     var error = err || info;
-    if (error) { return res.json(400, error); }
+    if (error) {
+      return res.json(400, error);
+    }
     req.logIn(user, function(err) {
-      if (err) { return res.send(err); }
+      if (err) {
+        return res.send(err);
+      }
       res.json(req.user.user_info);
     });
   })(req, res, next);
-}
+};

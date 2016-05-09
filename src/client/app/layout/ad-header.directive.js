@@ -3,10 +3,10 @@
 
   angular
     .module('app.layout')
-    .directive('htTopNav', htTopNav);
+    .directive('adHeader', adHeader);
 
   /* @ngInject */
-  function htTopNav() {
+  function adHeader() {
     var directive = {
       bindToController: true,
       controller: TopNavController,
@@ -15,7 +15,7 @@
       scope: {
         'navline': '='
       },
-      templateUrl: 'app/layout/ht-top-nav.html'
+      templateUrl: 'app/layout/ad-header.html'
     };
 
     TopNavController.$inject = ['$scope'];
