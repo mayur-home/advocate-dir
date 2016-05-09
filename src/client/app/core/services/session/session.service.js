@@ -10,12 +10,12 @@
     var Auth = $resource('/api/auth/session');
 
     return {
-      login: login
+      signin: signin
     };
 
     /////////////
 
-    function login(user) {
+    function signin(user) {
       var defer = $q.defer();
 
       Auth.save({

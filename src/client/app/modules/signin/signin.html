@@ -12,7 +12,8 @@
               <input type="text" class="form-control" name="email"
                      placeholder="Email" ng-model="vm.model.email"
                      required autofocus>
-              <div ng-messages="signinForm.email.$error" ng-show="signinForm.email.$invalid && signinForm.email.$touched">
+              <div ng-messages="signinForm.email.$error"
+                   ng-show="signinForm.email.$invalid && signinForm.email.$touched">
                 <span class="help-block" ng-message="required">Email is required.</span>
               </div>
             </div>
@@ -20,13 +21,15 @@
                  ng-class="{ 'has-error': signinForm.password.$touched && signinForm.password.$invalid }">
               <input type="password" class="form-control" name="password"
                      placeholder="Password" ng-model="vm.model.password" required>
-              <div ng-messages="signinForm.password.$error" ng-show="signinForm.password.$invalid && signinForm.password.$touched">
+              <div ng-messages="signinForm.password.$error"
+                   ng-show="signinForm.password.$invalid && signinForm.password.$touched">
                 <span class="help-block" ng-message="required">Password is required.</span>
               </div>
             </div>
             <button class="btn btn-primary"
                     type="button" ng-disabled="signinForm.$invalid"
-                    ng-click="vm.login()">Sign in</button>
+                    ng-click="vm.signin()">Sign in
+            </button>
           </form>
         </div>
       </div>
