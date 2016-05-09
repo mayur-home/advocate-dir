@@ -6,7 +6,7 @@
     .run(run);
 
   /* @ngInject */
-  function run(session) {
-    console.log('Run logged');
+  function run(logger) {
+    logger.info('Run logged');
   }
 })();

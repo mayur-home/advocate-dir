@@ -6,15 +6,16 @@
     .factory('session', session);
 
   /* @ngInject */
-  function session($http, $q, $rootScope) {
+  function session($http, $q, $rootScope, $window) {
     var authUrl = '/api/auth/session';
-    var user = {};
 
     return {
       signin: signin,
       signout: signout,
-      get: getSession,
-      getUser: getUser
+      getLoginData: getLoginData,
+      set: set,
+      get: get,
+      remove: remove
     };
 
     /////////////
@@ -26,41 +27,57 @@
         email: user.email,
         password: user.password,
         rememberMe: user.rememberMe
-      }).then(function(response) {
-        user = response.data;
+      }).then(signinSuccess, signinFailure);
+
+      function signinSuccess(response) {
+        var user = response.data;
+        set('user', user.email);
         $rootScope.$broadcast('login', user);
         defer.resolve(user);
-      }, function(err) {
+      }
+
+      function signinFailure(err) {
         defer.reject(err.data);
-      });
+      }
 
       return defer.promise;
     }
 
     function signout() {
       $http.delete(authUrl)
-        .then(function(data) {
+        .then(function() {
           console.log('session deleted');
-          user = {};
+          remove('user');
         });
     }
 
-    function getSession() {
+    function getLoginData() {
       var defer = $q.defer();
 
       $http.get(authUrl)
-        .then(function(response) {
-          if (response.data._id) {
-            user = response.data;
-            defer.resolve(user);
-          }
-        });
+        .then(getSessionSuccess);
+
+      function getSessionSuccess(response) {
+        if (response.data._id) {
+          var user = response.data;
+          set('user', user.email);
+          defer.resolve(user);
+        }
+      }
 
       return defer.promise;
     }
 
-    function getUser() {
-      return user;
+    function set(key, value) {
+      $window.sessionStorage.setItem(key, value);
+    }
+
+    function get(key) {
+      return $window.sessionStorage.getItem(key);
+    }
+
+    function remove(key) {
+      $window.sessionStorage.removeItem(key);
     }
   }
 

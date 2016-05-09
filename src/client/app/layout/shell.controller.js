@@ -21,7 +21,7 @@
 
     function activate() {
       logger.success(config.appTitle + ' loaded!', null);
-      session.get().then(function(user) {
+      session.getLoginData().then(function(user) {
         vm.username = user.email;
       });
     }
